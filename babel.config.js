@@ -11,6 +11,12 @@ module.exports = function(api) {
             screens: "./src/presentation/screens",
             api: "./src/infrastructure/api"
           }
+        },
+      ],
+      [
+        'module:react-native-dotenv',{
+          "moduleName": "@env",
+          "path": ".env",
         }
       ]
     ]

@@ -1,6 +1,8 @@
-import {api} from 'api'
-// import {draftbitAPI} from '../../infrastructure/draftbitAPI'
 import axios from 'axios'
+
+import {api} from 'api'
+import {draftbitAPI} from '../../infrastructure/draftbitAPI'
+import { BASE_URL } from '@env';
 
 // Define action types
 export const GET_BOOKS = 'GET_BOOKS'
@@ -11,8 +13,8 @@ export const getBooks = () => {
     try {
       console.log('here 2')
         return async dispatch => {
-          console.log('here 3:', api)
-          const response = await axios.get('https://example-data.draftbit.com/books?_limit=10')
+          console.log('here 3:', BASE_URL)
+          const response = await axios.get(BASE_URL)
           // const response = await draftbitAPI.get('books?_limit=10')
           console.log('here 4')
           if (response.data) {
