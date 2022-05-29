@@ -6,8 +6,10 @@ module.exports = function(api) {
       [
         'module-resolver', {
           alias: {
+            store: "./src/application/store",
             navigator: "./src/presentation/navigator",
-            screens: "./src/presentation/screens"
+            screens: "./src/presentation/screens",
+            api: "./src/infrastructure/api"
           }
         }
       ]
