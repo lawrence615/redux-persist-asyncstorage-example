@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-import {api} from 'api'
-import {draftbitAPI} from '../../infrastructure/draftbitAPI'
 import { BASE_URL } from '@env';
 
 // Define action types
@@ -11,12 +9,8 @@ export const REMOVE_FROM_BOOKMARK_LIST = 'REMOVE_FROM_BOOKMARK_LIST'
 
 export const getBooks = () => {
     try {
-      console.log('here 2')
         return async dispatch => {
-          console.log('here 3:', BASE_URL)
           const response = await axios.get(BASE_URL)
-          // const response = await draftbitAPI.get('books?_limit=10')
-          console.log('here 4')
           if (response.data) {
              dispatch({type: GET_BOOKS, payload: response.data})
           } else {
