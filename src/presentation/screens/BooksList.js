@@ -3,13 +3,30 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaView, View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 
-import { getBooks } from '../../application/redux/actions'
+import { getBooks, addBookmark, removeBookmark } from '../../application/redux/actions'
 
 
 const BooksList = () => {
 
   const dispatch = useDispatch()
-  const {books} = useSelector(state => state.booksReducer)
+  const addToBookmarkList = book => dispatch(addBookmark(book))
+  const removeFromBookmarkList = book => dispatch(removeBookmark(book))
+  const {books, booksmarks} = useSelector(state => state.booksReducer)
+
+  const handleAddBookmark = book => {
+    addToBookmarkList(book)
+  }
+
+  const handleRemoveBookmark = book => {
+    removeFromBookmarkList(book)
+  }
+
+  const ifExists = book => {
+    if(booksmarks.filter(item => item.id === book.id).length > 0){
+      return true
+    }
+    return false
+  }
 
   const renderItem = ({ item }) => {
     return (
@@ -58,12 +75,12 @@ const BooksList = () => {
             {/* Buttons */}
             <View style={{ marginTop: 14 }}>
               <TouchableOpacity
-                onPress={() => console.log('Bookmarked!')}
+                onPress={() => ifExists(item) ? handleRemoveBookmark(item) : handleAddBookmark(item)}
                 activeOpacity={0.7}
                 style={{
                   flexDirection: 'row',
                   padding: 2,
-                  backgroundColor: '#2D3038',
+                  backgroundColor: ifExists(item) ? '#F96D41' : '#2D3038',
                   borderRadius: 20,
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -74,7 +91,7 @@ const BooksList = () => {
                 <MaterialCommunityIcons
                   color='#64676D'
                   size={24}
-                  name='bookmark-outline'
+                  name={ifExists(item) ? 'bookmark-outline' : 'bookmark'}
                 />
               </TouchableOpacity>
             </View>
