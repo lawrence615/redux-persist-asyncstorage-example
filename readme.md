@@ -1,6 +1,6 @@
 # Redux Persist in React Native with Asyncstorage
 
-An example app on how to use Redux Persist in React Native with Asyncstorage based on this [tutorial](https://blog.jscrambler.com/how-to-use-redux-persist-in-react-native-with-asyncstorage).
+React Native example app on how to use Redux Persist in React Native with Asyncstorage based on this [tutorial](https://blog.jscrambler.com/how-to-use-redux-persist-in-react-native-with-asyncstorage).
 
 The purpose of this app is to refresh knowledge on redux
 
