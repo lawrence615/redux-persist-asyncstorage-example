@@ -28,3 +28,11 @@ export const getBooks = () => {
         console.log('error:',error);
     }
 }
+
+export const addBookmark = book => dispatch => {
+  dispatch({ type: ADD_TO_BOOKMARK_LIST, payload: book })
+}
+
+export const removeBookmark = book => dispatch => {
+  dispatch({ type: REMOVE_FROM_BOOKMARK_LIST, payload: book })
+}
