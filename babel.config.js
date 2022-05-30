@@ -6,6 +6,7 @@ module.exports = function(api) {
       [
         'module-resolver', {
           alias: {
+            rdx: "./src/application/redux",
             store: "./src/application/store",
             navigator: "./src/presentation/navigator",
             screens: "./src/presentation/screens",
