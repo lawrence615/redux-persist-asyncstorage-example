@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaView, View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 
-import { getBooks, addBookmark, removeBookmark } from '../../application/redux/actions'
+import { getBooks, addBookmark, removeBookmark } from 'rdx/actions';
 
 
 const BooksList = () => {
@@ -11,7 +11,7 @@ const BooksList = () => {
   const dispatch = useDispatch()
   const addToBookmarkList = book => dispatch(addBookmark(book))
   const removeFromBookmarkList = book => dispatch(removeBookmark(book))
-  const {books, booksmarks} = useSelector(state => state.booksReducer)
+  const {books, bookmarks} = useSelector(state => state.booksReducer)
 
   const handleAddBookmark = book => {
     addToBookmarkList(book)
@@ -22,7 +22,7 @@ const BooksList = () => {
   }
 
   const ifExists = book => {
-    if(booksmarks.filter(item => item.id === book.id).length > 0){
+    if(bookmarks.filter(item => item.id === book.id).length > 0){
       return true
     }
     return false
